@@ -13,3 +13,9 @@
 docker compose exec kafka bash -c "kafka-console-producer --broker-list kafka:9092 --topic test_topic"
 docker compose exec kafka bash -c "kafka-console-consumer --bootstrap-server kafka:9092 --topic test_topic --from-beginning"
 ```
+
+### producer_api and consumer_api (not working in all cases):
+```
+curl -X POST 'http://localhost:8000/send-message/' -H 'Content-Type: application/json' -d '{"message": "Hello from API!"}'
+curl "http://localhost:8001/consume-message/"
+```

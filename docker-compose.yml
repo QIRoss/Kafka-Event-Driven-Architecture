@@ -18,3 +18,19 @@ services:
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
     ports:
       - "9092:9092"
+
+  producer_api:
+    build: ./producer_api  # This directory contains the producer API
+    depends_on:
+      - zookeeper
+      - kafka
+    ports:
+      - "8000:8000"  # Expose FastAPI producer API on port 8000
+
+  consumer_api:
+    build: ./consumer_api  # This directory contains the consumer API
+    depends_on:
+      - zookeeper
+      - kafka
+    ports:
+      - "8001:8000"  # Expose FastAPI consumer API on port 8001
