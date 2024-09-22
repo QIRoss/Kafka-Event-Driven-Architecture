@@ -14,8 +14,14 @@ docker compose exec kafka bash -c "kafka-console-producer --broker-list kafka:90
 docker compose exec kafka bash -c "kafka-console-consumer --bootstrap-server kafka:9092 --topic test_topic --from-beginning"
 ```
 
-### producer_api and consumer_api (not working in all cases):
+### producer_api and consumer_api (not working in all cases) in API rest version commit:
 ```
 curl -X POST 'http://localhost:8000/send-message/' -H 'Content-Type: application/json' -d '{"message": "Hello from API!"}'
 curl "http://localhost:8001/consume-message/"
+```
+
+### Producer and Consumer containers outside of broker:
+```
+docker compose up --build
+docker compose exec consumer python /app/consumer.py
 ```
