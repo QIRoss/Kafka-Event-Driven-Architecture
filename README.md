@@ -7,3 +7,9 @@
 ### Days 1–10: Advanced Architectural Concepts.
 
 ### Day 3–4: Study Event-Driven Architecture (EDA) and set up a basic event bus using Kafka.
+
+### Kafka basics like initial commit:
+```
+docker compose exec kafka bash -c "kafka-console-producer --broker-list kafka:9092 --topic test_topic"
+docker compose exec kafka bash -c "kafka-console-consumer --bootstrap-server kafka:9092 --topic test_topic --from-beginning"
+```
